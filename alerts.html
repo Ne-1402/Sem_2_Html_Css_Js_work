@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediStock – Expiry Alerts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <span class="brand-cross">+</span>
+                <span class="brand-text">MediStock</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="toggle-bar"></span>
+                <span class="toggle-bar"></span>
+                <span class="toggle-bar"></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link">Dashboard</a></li>
+                <li><a href="inventory.html" class="nav-link">Inventory</a></li>
+                <li><a href="add.html" class="nav-link">Add Medicine</a></li>
+                <li><a href="alerts.html" class="nav-link">Expiry Alerts</a></li>
+                <li><a href="suppliers.html" class="nav-link">Suppliers</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="page-header">
+            <div class="page-header-text">
+                <h1 class="page-title">Expiry Alerts</h1>
+                <p class="page-subtitle">Monitor medicine expiry status and take action</p>
+            </div>
+        </div>
+
+        <div class="stat-cards" id="alertsSummary"></div>
+
+        <div class="alerts-color-key">
+            <div class="color-key-item color-key--expired">
+                <span class="color-key-label">Expired</span>
+                <span class="color-key-desc">Past expiry date – remove immediately</span>
+            </div>
+            <div class="color-key-item color-key--near">
+                <span class="color-key-label">Near Expiry</span>
+                <span class="color-key-desc">Expiring within 30 days – prioritize usage</span>
+            </div>
+            <div class="color-key-item color-key--safe">
+                <span class="color-key-label">Safe</span>
+                <span class="color-key-desc">More than 30 days until expiry</span>
+            </div>
+        </div>
+
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">Medicine Expiry Status</h2>
+                <span class="card-subtitle">Sorted by expiry date (soonest first)</span>
+            </div>
+            <div class="table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Medicine Name</th>
+                            <th>Batch Number</th>
+                            <th>Quantity</th>
+                            <th>Expiry Date</th>
+                            <th>Days Remaining</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="alertsTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="brand-cross brand-cross--sm">+</span>
+                <span>MediStock</span>
+            </div>
+            <p class="footer-text">Pharmacy Inventory Management System – Ensuring safe and efficient medicine management</p>
+            <p class="footer-copy">Developed for academic purposes</p>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="confirmModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Remove Medicine</h3>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to remove <strong id="modalMedicineName"></strong> from the inventory?</p>
+                <p class="modal-warning">This action cannot be undone.</p>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="modalCancelBtn">Cancel</button>
+                <button class="btn btn-danger" id="modalConfirmBtn">Remove</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

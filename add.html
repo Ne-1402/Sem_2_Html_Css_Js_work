@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediStock – Add Medicine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <span class="brand-cross">+</span>
+                <span class="brand-text">MediStock</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="toggle-bar"></span>
+                <span class="toggle-bar"></span>
+                <span class="toggle-bar"></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link">Dashboard</a></li>
+                <li><a href="inventory.html" class="nav-link">Inventory</a></li>
+                <li><a href="add.html" class="nav-link">Add Medicine</a></li>
+                <li><a href="alerts.html" class="nav-link">Expiry Alerts</a></li>
+                <li><a href="suppliers.html" class="nav-link">Suppliers</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="page-header">
+            <div class="page-header-text">
+                <h1 class="page-title">Add Medicine</h1>
+                <p class="page-subtitle">Register a new medicine entry into the inventory</p>
+            </div>
+        </div>
+
+        <div class="form-layout">
+            <section class="card form-card">
+                <div class="card-header">
+                    <h2 class="card-title">Medicine Details</h2>
+                </div>
+
+                <div id="successMessage" class="success-banner">
+                    Medicine added to inventory successfully.
+                </div>
+
+                <form id="addMedicineForm" novalidate>
+                    <div class="form-section">
+                        <h3 class="form-section-title">Medicine Information</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label" for="medName">Medicine Name</label>
+                                <input class="form-input" type="text" id="medName" name="medName" placeholder="e.g. Paracetamol 500mg">
+                                <span class="error-msg" id="medNameError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="medBatch">Batch Number</label>
+                                <input class="form-input" type="text" id="medBatch" name="medBatch" placeholder="e.g. BAT-2024-001">
+                                <span class="error-msg" id="medBatchError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="medQuantity">Quantity (units)</label>
+                                <input class="form-input" type="number" id="medQuantity" name="medQuantity" placeholder="e.g. 200" min="0">
+                                <span class="error-msg" id="medQuantityError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="medExpiry">Expiry Date</label>
+                                <input class="form-input" type="date" id="medExpiry" name="medExpiry">
+                                <span class="error-msg" id="medExpiryError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="medUnitPrice">Unit Price (₹)</label>
+                                <input class="form-input" type="number" id="medUnitPrice" name="medUnitPrice" placeholder="e.g. 1.50" min="0" step="0.01">
+                                <span class="error-msg" id="medUnitPriceError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="medOrderDate">Order Date</label>
+                                <input class="form-input" type="date" id="medOrderDate" name="medOrderDate">
+                                <span class="error-msg" id="medOrderDateError"></span>
+                            </div>
+                        </div>
+
+                        <div class="cost-preview" id="costPreview">
+                            <span class="cost-preview-label">Estimated Order Cost</span>
+                            <span class="cost-preview-value" id="costPreviewValue">&#8377;0.00</span>
+                            <span class="cost-preview-detail" id="costPreviewDetail">Enter quantity and unit price to calculate</span>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="form-section-title">Supplier Information</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label" for="medSupplier">Supplier Name</label>
+                                <input class="form-input" type="text" id="medSupplier" name="medSupplier" placeholder="e.g. MedCorp Ltd">
+                                <span class="error-msg" id="medSupplierError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="medContact">Supplier Contact</label>
+                                <input class="form-input" type="text" id="medContact" name="medContact" placeholder="e.g. +91-98765-43210">
+                                <span class="error-msg" id="medContactError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="medEmail">Supplier Email</label>
+                                <input class="form-input" type="email" id="medEmail" name="medEmail" placeholder="e.g. orders@medcorp.com">
+                                <span class="error-msg" id="medEmailError"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="resetFormBtn">Clear Form</button>
+                        <button type="submit" class="btn btn-primary">Add to Inventory</button>
+                    </div>
+                </form>
+            </section>
+
+            <aside class="form-sidebar">
+                <section class="card info-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Guidelines</h2>
+                    </div>
+                    <ul class="info-list">
+                        <li class="info-item">
+                            <span class="info-label">Unit Price</span>
+                            <span class="info-desc">Enter the cost per individual unit as invoiced by the supplier.</span>
+                        </li>
+                        <li class="info-item">
+                            <span class="info-label">Order Date</span>
+                            <span class="info-desc">The date the purchase order was placed or the batch was received.</span>
+                        </li>
+                        <li class="info-item">
+                            <span class="info-label">Batch Number</span>
+                            <span class="info-desc">Use the format BAT-YYYY-NNN as printed on the packaging.</span>
+                        </li>
+                        <li class="info-item">
+                            <span class="info-label">Quantity</span>
+                            <span class="info-desc">Enter the total number of individual units received.</span>
+                        </li>
+                        <li class="info-item">
+                            <span class="info-label">Expiry Date</span>
+                            <span class="info-desc">Enter the date exactly as printed on the medicine packaging.</span>
+                        </li>
+                        <li class="info-item">
+                            <span class="info-label">Low Stock Threshold</span>
+                            <span class="info-desc">Medicines with 20 or fewer units will trigger a low stock alert.</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="card info-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Inventory Summary</h2>
+                    </div>
+                    <div id="sidebarSummary" class="sidebar-summary"></div>
+                </section>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="brand-cross brand-cross--sm">+</span>
+                <span>MediStock</span>
+            </div>
+            <p class="footer-text">Pharmacy Inventory Management System – Ensuring safe and efficient medicine management</p>
+            <p class="footer-copy">Developed for academic purposes</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

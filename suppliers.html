@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediStock – Suppliers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <span class="brand-cross">+</span>
+                <span class="brand-text">MediStock</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="toggle-bar"></span>
+                <span class="toggle-bar"></span>
+                <span class="toggle-bar"></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link">Dashboard</a></li>
+                <li><a href="inventory.html" class="nav-link">Inventory</a></li>
+                <li><a href="add.html" class="nav-link">Add Medicine</a></li>
+                <li><a href="alerts.html" class="nav-link">Expiry Alerts</a></li>
+                <li><a href="suppliers.html" class="nav-link">Suppliers</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="page-header">
+            <div class="page-header-text">
+                <h1 class="page-title">Suppliers</h1>
+                <p class="page-subtitle">Supplier contact information and purchase history</p>
+            </div>
+        </div>
+
+        <div class="stat-cards" id="supplierStats"></div>
+
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">Supplier Directory</h2>
+            </div>
+            <div class="table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Supplier Name</th>
+                            <th>Contact Number</th>
+                            <th>Email Address</th>
+                            <th>Medicines Supplied</th>
+                            <th>Total Inventory Value (&#8377;)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="suppliersTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="card-header">
+                <h2 class="card-title">Purchase History</h2>
+                <span class="card-subtitle">Recent procurement records</span>
+            </div>
+            <div class="table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Supplier</th>
+                            <th>Medicine</th>
+                            <th>Quantity</th>
+                            <th>Unit Price (&#8377;)</th>
+                            <th>Total Cost (&#8377;)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="purchaseTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="brand-cross brand-cross--sm">+</span>
+                <span>MediStock</span>
+            </div>
+            <p class="footer-text">Pharmacy Inventory Management System – Ensuring safe and efficient medicine management</p>
+            <p class="footer-copy">Developed for academic purposes</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
