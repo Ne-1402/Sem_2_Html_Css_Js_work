@@ -1,2 +1,0 @@
-# Sem_2_Html_Css_Js_work
-Sem2_project_work
