@@ -1,7 +1,7 @@
 # MediStock – Pharmacy Inventory Management System
 
 **Course:** Web Technologies – Case Study Project  
-**Technology Stack:** HTML5 · CSS3 · Vanilla JavaScript  
+**Technology Stack:** HTML5 · CSS3 · JavaScript  
 **Domain:** Healthcare
 
 ---
